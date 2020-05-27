@@ -17,3 +17,16 @@ Route::get('/', function () {
 
     return view('welcome', compact('helloWorld'));
 });
+
+Route::get('/model', function() {
+
+    // \App\User::all() - Retorna todos os usuários 
+    // \App\User::find(1) - Retorna um usuário
+    // \App\User::where('name','email')
+
+    // return \App\User::all();
+
+    // return \App\User::where('name','Katherine Kovacek')->first(); -- primeiro
+    // select * from users where name = "Vinicius"
+    return \App\User::paginate(10);
+});
