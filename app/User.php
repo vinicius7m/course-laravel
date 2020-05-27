@@ -24,8 +24,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+    //  Oculta alguns campos
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token'
     ];
 
     /**
@@ -33,7 +34,13 @@ class User extends Authenticatable
      *
      * @var array
      */
+    // Conversão automática de tipos 
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function stores() {
+        // Um usuário tem UMA loja
+        return $this->hasOne(Store::class);
+    }
 }
