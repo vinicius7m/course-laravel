@@ -28,5 +28,27 @@ Route::get('/model', function() {
 
     // return \App\User::where('name','Katherine Kovacek')->first(); -- primeiro
     // select * from users where name = "Vinicius"
-    return \App\User::paginate(10);
+    // return \App\User::paginate(10); -- Paginação do Laravel
+
+    // return \App\User::all();
+
+    /* Mass Assignment Atribuição em massa 
+    
+    $user = \App\User::create([
+       'name'=>'Nanderson Castro',
+        'email'=>'nanderson@gmail.com',
+        'password'=>bcrypt('1223345')
+    ]); */
+
+    /* Mass Update
+    $user = \App\User::find(42);
+
+    $user = $user->update([
+        'name'=>'Nome atualidade'
+    ]);    
+    dd($user); */
+
+    return \App\User::all();
+
+    
 });
