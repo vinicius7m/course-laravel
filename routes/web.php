@@ -48,7 +48,72 @@ Route::get('/model', function() {
     ]);    
     dd($user); */
 
-    return \App\User::all();
+    // * Como fazer para pegar loja de um usuário
+    // $user = \App\User::find(4);
+    // dd($user->store()->count()); // objeto único (Store)
+    // return dd($user->store());
 
+    // $loja = \App\Store::find(1);
+    //return dd($loja->products());
+
+    // return \App\User::all();
+
+    // Pegar categoria de uma loja
+    // $category = \App\Category::find(2);
+    // $category->products;
+
+    // * Criar uma loja para um usuário
+    // $user = \App\User::find(3);
+    // $store = $user->store()->create([
+    //     'name'=>'Loja teste',
+    //     'description'=>'Loja teste de produtos de informática',
+    //     'mobile_phone'=>'XX-XXXXX-XXXX',
+    //     'phone'=>'XXXX-XXXX',
+    //     'slug'=>'loja-teste'
+    // ]);
+
+    // * Criar um produto para uma loja
+    // $store = \App\Store::find(41);
+    // $product = $store->products()->create([
+    //     'name'=>'Teste de Produto',
+    //     'description'=>'Teste de nome de produto bom',
+    //     'body'=>'Produto não sei das quantas',
+    //     'price'=>10.22,
+    //     'slug'=>'teste-produto'
+    // ]);
+
+
+    // * Criar uma categoria 
+    // \App\Category::create([
+    //     'name'=>'Games',
+    //     'description'=>null,
+    //     'slug'=>'games'
+    // ]);
+
+    // \App\Category::create([
+    //     'name'=>'Joojs',
+    //     'description'=>null,
+    //     'slug'=>'Joojs'
+    // ]);
+    // return \App\Category::all();
+    // return \App\Category::all();
     
+    // * Adicionar um produto para uma categoria
+    // $product = \App\Product::find(30);
+    // attach - pega a categoria de acordo com o id
+    //dd($product->categories()->sync([2]));
+    // dd($product->categories()->attach([1]));
+    // dd($product->categories()->detach([]));
+
+    $produto = \App\Product::find(30);
+    return $produto->categories;
+
 });
+
+Route::get('admin/stores', 'Admin\\StoreController@index');
+// Route::get - recupera
+// Route::post - cria
+// Route::put - atualização
+// Route::patch - atualização
+// Route::delete - exclui
+// Route::options - configurações e rotas
